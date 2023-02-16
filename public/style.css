@@ -1,0 +1,193 @@
+body { 
+    margin: 0;
+    background-color: rgb(29, 29, 46);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+color: azure;
+text-align: center;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+
+
+h1{
+    color: azure;
+    text-align: center;
+    font-size: 50px;
+    
+}
+.parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 250px;
+    margin-top: 150px;
+  
+   
+
+}
+
+.backgroundDiv {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 200px;
+    background-image: linear-gradient(to bottom, #520fd1, #460eb5, #3a0c9a, #2f0a80, #250866);
+    margin: auto;
+    border-radius: 15px;
+    border:1px solid #4d3d6c;
+    box-shadow: 1px 1px 10px rgb(102, 76, 197);
+    animation: mymove 5s infinite;
+    
+}
+
+.child{
+    
+    padding: 5px;
+    margin: auto;
+    font-size: 23px;
+    width: 200px;
+    background-color: rgba(42, 41, 48, 0.258);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.331);
+ 
+    box-shadow: 2px 2px 8px rgb(138, 123, 200);
+}
+
+    .child:hover{
+        background-color:rgba(92, 63, 220, 0.153);
+        border: 2px solid rgba(205, 196, 224, 0.583);
+        box-shadow: 2px 1px 20px rgb(218, 209, 233);
+    }
+
+
+.child2{
+    padding: 5px;
+    margin: auto;
+  font-size: 23px;
+    width: 200px;
+    background-color: rgb(53, 53, 108);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.231);
+  
+    box-shadow: 2px 2px 8px rgb(138, 123, 200)
+}
+
+    .child2:hover{
+        background-color:rgba(92, 63, 220, 0.153);
+        border: 2px solid rgba(205, 196, 224, 0.583);
+        box-shadow: 2px 1px 20px rgb(218, 209, 233);
+    }
+
+
+
+.child3{
+    padding: 5px;
+    margin: auto;
+  font-size: 23px;
+    width: 200px;
+    background-color: rgb(53, 53, 108);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.251);
+    
+    box-shadow: 2px 2px 8px rgb(138, 123, 200)
+    
+}
+
+    .child3:hover{
+        background-color:rgba(92, 63, 220, 0.153);
+        border: 2px solid rgba(205, 196, 224, 0.583);
+        box-shadow: 2px 1px 20px rgb(218, 209, 233);
+    }
+
+
+a {
+ color: azure;
+ text-decoration: none;
+ font-size: 20px;
+
+ }
+
+.a_chiild1 {
+    padding:0px 53px ;
+} 
+.a_chiild2 {
+    padding:0px 35px ;
+} 
+
+.a_chiild3 {
+    padding:0px 30px ;
+} 
+
+
+
+
+
+
+
+
+footer{ 
+    margin-top: auto;
+    font-size: 13px;
+}
+
+
+
+
+
+.Ball {
+display: flex;
+flex-direction: column-reverse;
+justify-content: space-around;
+align-items: center;
+height: 800px;
+max-width: 750px;
+z-index: -2;
+margin-top: -500px;
+
+}
+
+.Ball img {
+    width: 200px;
+    height: 200px;
+}
+
+.group1 {
+    margin-left: 200px;
+    z-index: 10;
+}
+
+.group2 {
+    margin-left: 0px;
+    z-index: -1;
+   }
+.group3 {
+    margin-left: -200px;
+    z-index: 10;
+    animation: ballshadow  15s infinite;
+    border-radius: 100%;
+
+
+}
+
+
+
+  
+    
+
+  @keyframes mymove {
+    50% {box-shadow: 1px 1px 30px rgb(144, 141, 200);}
+  }
+
+
+  @keyframes ballshadow {
+    50% {box-shadow: 1px 1px 40px rgb(151, 144, 231);}
+  }
+
+
+
+  p {
+    font-weight: bold;
+  }

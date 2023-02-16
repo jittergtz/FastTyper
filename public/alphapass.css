@@ -1,0 +1,104 @@
+body {
+    background-color: black;
+}
+
+
+
+
+.form_parent{
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+
+
+
+input {
+    font-size: 1.1rem;
+    background-color: rgb(38, 40, 40);
+    border-radius: calc(4px);
+    color: rgb(158, 156, 227);
+    border: 1px solid rgb(66, 66, 66);
+    animation: background_light  4s infinite;
+    
+}
+button{font-size: 1.1rem;
+    background-color: rgb(38, 40, 40);
+    border-radius: calc(4px);
+    color: rgb(158, 156, 227);
+    border: 1px solid rgb(66, 66, 66);
+    animation: background_light  4s infinite;
+  }
+
+button:hover{
+  color: rgba(255, 255, 255, 0.329);
+}
+
+
+
+
+@keyframes background_light {
+    50% {
+        box-shadow: 2px 2px 20px rgb(158, 156, 227);
+      }}
+ 
+
+
+.image_parent{
+
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  
+}
+
+
+.ball1{
+  width: 40px;
+  height: 40px;
+  animation: ball1 4s infinite;
+  border-radius: 100%;
+ background-color: black;
+}
+
+.ball2{
+  width: 40px;
+  height: 40px;
+  animation: ball2 4s infinite;
+ border-radius: 100%;
+ background-color: black;
+}
+
+
+@keyframes ball1 {
+  0% {
+      transform: translate(0px, 0px); /* Initial position */
+  }
+  50% {
+    transform: translate(140px, 0px); /* Initial position */
+    background-color: rgb(95, 188, 211);
+}
+0% {
+  transform: translate(0px, 0px); /* Initial position */
+}
+ 
+   
+  }
+
+
+  @keyframes ball2 {
+    0% {
+        transform: translate(0px, 0px); /* Initial position */
+    }
+    50% {
+      transform: translate(-140px, 0px); /* Initial position */
+      background-color:  rgb(95, 188, 211);
+  }
+  0% {
+    transform: translate(0px, 0px); /* Initial position */
+  }
+   
+     
+    }
+  
