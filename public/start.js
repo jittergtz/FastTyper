@@ -153,14 +153,17 @@ for (let i = 0; i < 150; i++) {
     const isLetter = key.length === 1 && key !== ' ';
     const isSpace = key === ' ';
   
-    console.log({ key, expected });
+    
   
     if (isLetter) {
       if (currentLetter) {
         addClass(currentLetter, key === expected ? 'correct' : 'incorrect');
         removeClass(currentLetter, 'current');
-        if(currentLetter.nextElementSibling){
+        if (currentLetter.nextElementSibling) {
           addClass(currentLetter.nextElementSibling, 'current');
+          // move the cursor to the next letter
+          cursor.style.top = currentLetter.nextElementSibling.getBoundingClientRect().top + 2 + 'px';
+          cursor.style.left = currentLetter.nextElementSibling.getBoundingClientRect().left + 'px';
         }
       } else {
         const incorrectLetter = document.createElement('span');
@@ -168,8 +171,8 @@ for (let i = 0; i < 150; i++) {
         incorrectLetter.className = 'letter incorrect extra';
         currentWord.appendChild(incorrectLetter);
       }
-
     }
+    
   
     if (isSpace) {
       if (expected !== ' ') {
@@ -189,16 +192,37 @@ for (let i = 0; i < 150; i++) {
       }
 
 
+
+
+
+
+
+
+
+
+
       //cursor
       const nextLetter = document.querySelector('.letter.current');
       const nextWordcursor = document.querySelector('.word.current');
       const cursor = document.getElementById('cursor');
       cursor.style.top = (nextLetter || nextWordcursor).getBoundingClientRect().top + 2 + 'px';
-      cursor.style.left = (nextLetter || nextWordcursor).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
+      cursor.style.left = (nextLetter || nextWordcursor).getBoundingClientRect()[nextLetter ? 'left' : 'right'] - 2 + 'px';
+     
+ 
+      
 
 
 
 
+       // When the modal is shown, we want a fixed body
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${window.scrollY}px`;
+
+        // When the modal is hidden...
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
 
 
