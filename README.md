@@ -1,0 +1,2 @@
+# FastTyper
+typing game app
