@@ -16,7 +16,9 @@ body {
     justify-content: space-between;
     flex-direction: row;
     width: auto;
-    background-color: rgb(20, 24, 150);
+    background-image: linear-gradient(to bottom, #520fd1, #460eb5, #3a0c9a, #2f0a80, #250866);
+    box-shadow: 1px 1px 20px rgb(55, 20, 167);
+
   }
 
   /*
@@ -66,18 +68,18 @@ body {
     font-weight: bold;
     color: rgb(255, 255, 255);
     padding: 12px;
-    background-color: rgb(46, 46, 53);
+    background-color: rgba(11, 3, 42, 0.35);
     border-radius: 20px;
     
-    border: 2px solid rgb(86, 81, 237);
+    border: 1px solid rgb(225, 225, 239);
   }
   
   .btn_retry {
     margin: 2px 10px;
     border-radius: calc(20px);
-    border:2px solid rgb(86, 81, 237);
-    background-color:  rgb(46, 46, 53);
-    color:  rgb(86, 81, 237);
+    border: 1px solid rgb(225, 225, 239);
+    background-color: rgba(11, 3, 42, 0.35);
+    color:  rgb(232, 231, 247);
     padding: 10px;
     font-weight: bold;
     font-size: 15px;
@@ -90,10 +92,6 @@ body {
     .upper_Background_Line{
         margin: 80px 50px;
     }
-
-  
-  
-
     .word_parent{
       margin: -70px 50px;
     }
@@ -142,21 +140,6 @@ body {
     margin: -70px 400px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -230,22 +213,13 @@ margin-top: -75px;
 
 .word_parent {
   display: flex;
-  padding: 10px;
   justify-content: space-between;
- 
-position: relative;
-
   flex-wrap: wrap;
-  overflow: hidden;
-  line-height: 35px;
-  height: 100px;
-  background-color: aqua;
-
-  
-}
+  }
 
 div.word_parent:focus{
   outline: 0;
+
 
 }
 
@@ -253,15 +227,15 @@ div.word_parent:focus{
 
 
 .word_parent > div {
-  color: rgb(167, 167, 167);
+  color: rgb(205, 205, 205);
   font-size: 1.7rem;
-  
- border: 1px solid red;
+  padding: 0px 7px;
 }
 
 #words{
-  filter: blur(5px);
-  
+  filter: blur(4px);
+
+
 }
 
 #game:focus #words{
@@ -276,7 +250,7 @@ div.word_parent:focus{
 
 
 .letter.correct{
-  color:  rgb(86, 81, 237);
+  color:  rgb(114, 74, 234);
   display: inline-block;
   /*animation: increaseSize  .2s  ease-in-out;*/
   
@@ -284,9 +258,8 @@ div.word_parent:focus{
 
 }
 .letter.incorrect{
-  color: rgb(233, 60, 37);
+  color: rgba(203, 70, 53, 0.804);
 }
-
 
 
 @keyframes increaseSize {
@@ -309,15 +282,13 @@ div.word_parent:focus{
 
 
 #cursor {
-  width: 3px;
+  width: 2px;
   height: 1.9rem;
-  background-color:  rgb(86, 81, 237);
+  background-color:  rgb(114, 74, 234);
   position: absolute;
   top: 190px;
-  left: 7px;
-  
-  
- animation: blink .2s infinite;
+  left: 6px;
+  animation: blink .9s infinite;
   display: none;
   border-radius: 5px;
 }
@@ -343,14 +314,63 @@ div.word_parent:focus{
   }
 }
 
-#game{
- border: hidden;
+
+
+
+.child_background{
+  background-color: aliceblue;
+  width: 50px;
+  height: 50px;
 }
+
+#game{
+
+  width: auto;
+  height: 100px;
+  overflow: hidden;
+
+  background-color: rgba(11, 3, 42, 0.35);
+  box-shadow: 1px 1px 20px rgb(169, 147, 201);
+ margin-top: 10px;
+
+}
+
+.scoreboard{
+  display: flex;
+  justify-content: center;
+  background-color: #cec2e6;
+  margin: 0px 5px;
+ height: 200px;
+ margin-top: 120px;
+ border-radius: 10px;
+ background-color: rgba(21, 21, 23, 0.806);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 *:focus {
   outline: none;
 }
-
-
