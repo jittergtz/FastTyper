@@ -1,80 +1,10 @@
-const userText = document.getElementById('user-text');
-const startBtn = document.getElementById('start-btn');
-const timer = document.getElementById('timer');
-const retryBtn = document.getElementById('retry');
-let timeLeft = 60; // function hinzufügen um eine zeit durch button auszuwählen 1
-let timerRunning = false;
-
-userText.addEventListener('input', () => {
-  if (!timerRunning && userText.value.trim() !== '') {
-    timerRunning = true;
-    startTimer();
-  }
-});
-
-retryBtn.addEventListener('click', () => {
-  // Clear the text in the textarea
-  userText.value = '';
-  document.getElementById("user-text").disabled = false;
-  
-  // Reset the timer
-  timeLeft = 60; // function hinzufügen um eine zeit durch button auszuwählen 2end
-  timer.innerText = '1:00';
-
-  // Hide the retry button
-  retryBtn.style.display = 'none';
-  
-  // Restart the countdown
-  timerRunning = false;
-});
-
-function startTimer() {
-  const countdown = setInterval(() => {
-    timeLeft--;
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timer.innerText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    if (timeLeft === 0) {
-        document.getElementById("user-text").disabled = true;
-      clearInterval(countdown);
-      // Handle end of time here
-      retryBtn.style.display = 'block';
-    }
-  }, 1000);
-}
-
-
-
-//bearbeiten
-const myTextarea = document.getElementById('user-text');
-
-myTextarea.addEventListener('focus', () => {
-  // Save the current scroll position
-  const scrollPosition = window.scrollY;
-
-  // Listen for scroll events
-  window.addEventListener('scroll', preventScroll);
-
-  // Prevent the default scroll behavior
-  function preventScroll() {
-    window.scrollTo(0, scrollPosition);
-  }
-});
-
-myTextarea.addEventListener('blur', () => {
-  // Remove the scroll event listener when the textarea loses focus
-  window.removeEventListener('scroll', preventScroll);
-});
-//bearbeiten ende
-
-
 
 
 fetch('json/german1k.json')
   .then(response => response.json())
   .then(data => {
     const words = data.words;
-    const wordParentElement = document.querySelector('.word_parent');
+    const wordParentElement = document.getElementById('words');
     
 // loop to generate 150 random words and append to wordParentElement
 for (let i = 0; i < 150; i++) {
@@ -106,25 +36,9 @@ for (let i = 0; i < 150; i++) {
 
   // append the randomWordDiv to the wordParentElement
   wordParentElement.appendChild(randomWordDiv);
-  wordParentElement.appendChild(document.createTextNode('\u00A0'));
+;
 }
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   function formatWord(word) {
@@ -143,7 +57,7 @@ for (let i = 0; i < 150; i++) {
   
   
   
-  
+  // game beginning
   
   document.getElementById('game').addEventListener('keyup', ev => {
     const key = ev.key;
@@ -152,18 +66,37 @@ for (let i = 0; i < 150; i++) {
     const expected = currentLetter?.innerHTML || ' ';
     const isLetter = key.length === 1 && key !== ' ';
     const isSpace = key === ' ';
+    const isBackspace = key === "Backspace";
+    const isFirstLetter = currentLetter === currentWord.firstChild;
   
-    
-  
+    if (isBackspace){
+      if(currentLetter && isFirstLetter){
+        removeClass(currentWord, 'current');
+        addClass(currentWord.previousSibling, 'current')
+        removeClass(currentLetter, 'current')
+        addClass(currentWord.previousSibling.lastChild, 'current')
+        removeClass(currentWord.previousSibling.lastChild, 'incorrect')
+        removeClass(currentWord.previousSibling.lastChild, 'correct')
+      }
+      if (currentLetter && !isFirstLetter){
+        removeClass(currentLetter, 'current')
+        addClass(currentLetter.previousSibling, 'current');
+        removeClass(currentLetter.previousSibling, 'incorrect')
+        removeClass(currentLetter.previousSibling, 'correct')
+      }
+      if(!currentLetter){
+        addClass(currentWord.lastChild, 'current')
+        removeClass(currentWord.lastChild, 'incorrect')
+        removeClass(currentWord.lastChild, 'correct')
+      }
+    }
+
     if (isLetter) {
       if (currentLetter) {
         addClass(currentLetter, key === expected ? 'correct' : 'incorrect');
         removeClass(currentLetter, 'current');
-        if (currentLetter.nextElementSibling) {
-          addClass(currentLetter.nextElementSibling, 'current');
-          // move the cursor to the next letter
-          cursor.style.top = currentLetter.nextElementSibling.getBoundingClientRect().top + 2 + 'px';
-          cursor.style.left = currentLetter.nextElementSibling.getBoundingClientRect().left + 'px';
+        if (currentLetter.nextSibling) {
+          addClass(currentLetter.nextSibling, 'current');
         }
       } else {
         const incorrectLetter = document.createElement('span');
@@ -173,7 +106,7 @@ for (let i = 0; i < 150; i++) {
       }
     }
     
-  
+  //space beginning
     if (isSpace) {
       if (expected !== ' ') {
         const lettersToInvalidate = [...document.querySelectorAll('.word.current .letter:not(.correct)')];
@@ -182,32 +115,43 @@ for (let i = 0; i < 150; i++) {
         });
       }
       removeClass(currentWord, 'current');
-      const nextWord = currentWord.nextElementSibling;
+      const nextWord = currentWord.nextSibling;
       if (nextWord) {
         addClass(nextWord, 'current');
         addClass(nextWord.firstChild, 'current');
       }
       if (currentLetter) {
         removeClass(currentLetter, 'current');
-      }
+      }}
+// space end 
+
+
+
+
+      
+
+       //cursor
+       const nextLetter = document.querySelector('.letter.current');
+       const nextWord = document.querySelector('.word.current');
+       const cursor = document.getElementById('cursor');
+       cursor.style.top = (nextLetter || nextWord).getBoundingClientRect().top + 2 + 'px';
+       cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
 
 
 
 
 
-
-
-
-
-
-
-      //cursor
-      const nextLetter = document.querySelector('.letter.current');
-      const nextWordcursor = document.querySelector('.word.current');
-      const cursor = document.getElementById('cursor');
-      cursor.style.top = (nextLetter || nextWordcursor).getBoundingClientRect().top + 2 + 'px';
-      cursor.style.left = (nextLetter || nextWordcursor).getBoundingClientRect()[nextLetter ? 'left' : 'right'] - 2 + 'px';
-     
+          // move lines / words
+  if (currentWord.getBoundingClientRect().top > 220) {
+    const words = document.querySelector('.word_parent');
+    const margin = parseInt(words.style.marginTop || '0px');
+     words.style.marginTop = (margin - 33) + 'px';
+  }
+  
+   // glaub ich muss words auf eine klasse reduzieren und word parents entfernen wegen css undso
+   
+});
+  // game end
  
       
 
@@ -227,10 +171,3 @@ for (let i = 0; i < 150; i++) {
 
 
 
-
-
-
-
-
-    }
-  });
